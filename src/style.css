@@ -127,3 +127,40 @@ h1 { font-family: var(--font-header); font-size: 4.5rem; line-height: 0.9; backg
   filter: grayscale(0%); /* Color comes back on hover */
   transform: scale(1.1);
 }
+
+/* --- TEAM SECTION UPDATES --- */
+.team-intro {
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  border-left: 2px solid var(--neon-blue);
+  padding-left: 1.5rem;
+  background: rgba(0,0,0,0.4);
+  padding: 1.5rem;
+}
+
+.role-title {
+  color: var(--neon-orange);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.role-desc {
+  font-size: 0.85rem;
+  color: #aaa;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+/* Make cards slightly taller to fit text */
+.crew-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

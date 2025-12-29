@@ -7,21 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    
-    <!-- 1. MathJax Configuration (Must be before the script loads) -->
-    <script>
-      window.MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          displayMath: [['$$', '$$'], ['\\[', '\\]']]
-        },
-        svg: {
-          fontCache: 'global'
-        }
-      };
-    </script>
-    <!-- 2. Load MathJax -->
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </head>
   <body>
     <canvas id="bg-canvas"></canvas>
@@ -40,130 +25,154 @@
         <div class="logo-text">GUIN<span class="danger-text">SYSTEMS</span></div>
       </div>
       <div class="nav-links">
-        <a href="#mission">01 // MISSION</a>
+        <a href="#overview">01 // OVERVIEW</a>
         <a href="#model">02 // PROTOTYPE</a>
-        <a href="#analysis">03 // DATA</a>
-        <a href="#team">04 // CREW</a>
+        <a href="#team">03 // SQUADRON</a>
       </div>
     </nav>
 
     <main>
+      <!-- HERO SECTION -->
       <section id="hero">
         <div class="hero-container">
-          <div class="status-indicator"><span class="blink"></span> PROJECT: BETA</div>
+          <div class="status-indicator"><span class="blink"></span> SYSTEM: ONLINE</div>
           <h1 class="glitch-header" data-value="ADAPTIVE AERODYNAMIC">ADAPTIVE AERODYNAMIC</h1>
           <h1 class="glitch-header sub-h1" data-value="HEAT SHIELD">HEAT SHIELD</h1>
-          <p class="hero-sub">Engineering the next generation of atmospheric entry.<br>Deployable geometry. Non-ablative protection.</p>
+          
+          <p class="hero-sub">
+            Next-gen durability with deployable double-cone geometry.
+            Engineered for multi-variable landings and maximum lifespan.
+          </p>
+          
           <div class="hero-stats">
-             <div class="stat-box"><span class="label">ENTRY SPEED</span><span class="val">7.8 km/s</span></div>
-            <div class="stat-box"><span class="label">HEAT FLUX</span><span class="val accent">MAXIMAL</span></div>
+             <div class="stat-box">
+               <span class="label">DECELERATION</span>
+               <span class="val accent">+20%</span>
+             </div>
+            <div class="stat-box">
+              <span class="label">MECHANISM</span>
+              <span class="val">RETRACTABLE</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="mission">
-        <div class="section-title"><span class="num">01</span><h2 class="decrypt" data-value="MISSION PARAMETERS">MISSION PARAMETERS</h2></div>
+      <!-- SECTION 1: INTRODUCTION (From your text) -->
+      <section id="overview">
+        <div class="section-title">
+          <span class="num">01</span>
+          <h2 class="decrypt" data-value="INNOVATION OVERVIEW">INNOVATION OVERVIEW</h2>
+        </div>
         <div class="content-grid">
           <div class="holo-card">
-            <h3>The Thermal Barrier</h3>
-            <p>Spacecraft entering atmospheres like Mars or Earth face the "Entry Interface"—a wall of superheated plasma reaching <strong>3,000°C</strong>. Current ablative shields are heavy, static, and single-use.</p>
+            <h3>The Concept</h3>
+            <p>Inspired by modern space engineering, our innovation prioritizes <strong>durability and flexibility</strong>. Unlike standard single-use shields, the GUIN Shield offers a longer career lifespan and is capable of handling multi-variable landing conditions without sustaining critical damage.</p>
           </div>
           <div class="holo-card accent-border">
-            <h3>The Adaptive Solution</h3>
-            <p>The <strong>GUIN Shield</strong> utilizes morphing geometry. By deploying inflatable sections reinforced with silica aerogels, we dynamically alter the drag coefficient ($C_d$) to ensure payload survival.</p>
+            <h3>Performance Objectives</h3>
+            <p>The system is designed to fit the rocket's specific mass and volume. By deploying motor-arms upon atmospheric entry, we achieve a direct <strong>deceleration of 15-20%</strong>, proportionally reducing heat intake and protecting the spacecraft throughout the descent.</p>
           </div>
         </div>
       </section>
 
+      <!-- SECTION 2: MODEL & MECHANISM (From your text) -->
       <section id="model">
-        <div class="section-title"><span class="num">02</span><h2 class="decrypt" data-value="SYSTEM ARCHITECTURE">SYSTEM ARCHITECTURE</h2></div>
+        <div class="section-title">
+          <span class="num">02</span>
+          <h2 class="decrypt" data-value="SYSTEM ARCHITECTURE">SYSTEM ARCHITECTURE</h2>
+        </div>
         <div class="model-split-layout">
           <div class="model-details">
             <div class="detail-block">
-              <h4><span class="icon">CAD</span> SOLIDWORKS MODELING</h4>
-              <p>Designed using SolidWorks Motion Study. Verified for mechanical stress during the Mach 25 deceleration phase.</p>
+              <h4><span class="icon">GEO</span> DOUBLE-CONE GEOMETRY</h4>
+              <p>Modified using CAD technologies, the shield features a double-cone shape with <strong>motor-arms and flaps</strong> for precise deployment and retraction.</p>
             </div>
             <div class="detail-block">
-              <h4><span class="icon">MAT</span> ADVANCED MATERIALS</h4>
-              <p>Integration of flexible ceramics and high-temp shape-memory alloys.</p>
+              <h4><span class="icon">MAT</span> THERMAL ABLATION</h4>
+              <p>Utilizing super-light thermal-protect ablation material. It locks heat away with minimal space occupancy, optimizing the mass-to-protection ratio.</p>
+            </div>
+            <div class="detail-block">
+              <h4><span class="icon">OPS</span> RETRACTION SEQUENCE</h4>
+              <p>Post-landing, the motor-arms detract the shield to protect the mechanism for future use, validated via CFD analysis for heat and pressure resilience.</p>
             </div>
           </div>
+          
+          <!-- 3D VIEWPORT -->
           <div id="model-viewer-container" class="glass-viewport">
             <div class="loading-overlay">INITIALIZING MODEL...</div>
             <canvas id="model-canvas"></canvas>
-            <div class="controls-hint">DRAG TO ROTATE // SCROLL TO ZOOM</div>
+            <div class="controls-hint">DRAG TO ROTATE</div>
           </div>
         </div>
       </section>
 
-      <section id="analysis">
-        <div class="section-title"><span class="num">03</span><h2 class="decrypt" data-value="TELEMETRY DATA">TELEMETRY DATA</h2></div>
-        <div class="data-console">
-          <div class="console-header">/// PHYSICS ENGINE</div>
-          <div class="formula-row">
-            <div class="formula-box">
-              <span class="f-label">HEAT FLUX (FAY-RIDDELL)</span>
-              <!-- This $$ syntax will be rendered by MathJax -->
-              <div class="math-display">
-                $$ q = C \sqrt{\frac{\rho_e}{r_n}} V_e^3 $$
-              </div>
-              <p class="f-desc">Increasing nose radius ($r_n$) via expansion drastically reduces heat.</p>
-            </div>
-            <div class="formula-box">
-              <span class="f-label">REYNOLDS NUMBER</span>
-              <div class="math-display">
-                $$ Re = \frac{\rho V L}{\mu} $$
-              </div>
-              <p class="f-desc">Used to predict laminar-to-turbulent flow transitions.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <!-- SECTION 3: TEAM (Penguins) -->
       <section id="team">
-              <div class="section-title">
-                <span class="num">04</span>
-                <h2 class="decrypt" data-value="GUIN SQUADRON">GUIN SQUADRON</h2>
-              </div>
-              
-              <div class="crew-grid">
-                <!-- Bill -->
-                <div class="crew-card">
-                  <div class="id-badge">
-                    <img src="https://images.unsplash.com/photo-1598439210625-5067c578f3f6?auto=format&fit=crop&w=300&q=80" alt="Penguin">
-                  </div>
-                  <h3>BILL</h3>
-                  <div class="bar-code"></div>
-                </div>
+        <div class="section-title">
+          <span class="num">03</span>
+          <h2>GUIN SQUADRON</h2>
+        </div>
+        
+        <!-- Team Backstory -->
+        <div class="team-intro">
+          <p>
+            United by a shared passion for aerospace engineering, our squadron formed to address the critical challenges of modern aviation. Despite operating across different countries, we leverage digital collaboration to research enhanced technologies and design our own innovation.
+          </p>
+        </div>
 
-                <!-- Gordon -->
-                <div class="crew-card">
-                  <div class="id-badge">
-                    <img src="https://images.unsplash.com/photo-1598439210625-5067c578f3f6?auto=format&fit=crop&w=300&q=80" alt="Penguin">
-                  </div>
-                  <h3>GORDON</h3>
-                  <div class="bar-code"></div>
-                </div>
+        <div class="crew-grid">
+          
+          <!-- Jason -->
+          <div class="crew-card">
+            <div class="id-badge">
+              <img src="https://images.unsplash.com/photo-1598439210625-5067c578f3f6?auto=format&fit=crop&w=300&q=80" alt="Penguin">
+            </div>
+            <h3>JASON</h3>
+            <p class="role-title">OPERATIONS LEAD</p>
+            <p class="role-desc">
+              Orchestrates project management and business strategy. He tracks progress and ensures seamless workflow synchronization across international borders, maintaining clear communication links for the team.
+            </p>
+          </div>
 
-                <!-- Jason -->
-                <div class="crew-card">
-                  <div class="id-badge">
-                    <img src="https://images.unsplash.com/photo-1598439210625-5067c578f3f6?auto=format&fit=crop&w=300&q=80" alt="Penguin">
-                  </div>
-                  <h3>JASON</h3>
-                  <div class="bar-code"></div>
-                </div>
+          <!-- Gordon -->
+          <div class="crew-card">
+            <div class="id-badge">
+              <img src="https://images.unsplash.com/photo-1598439210625-5067c578f3f6?auto=format&fit=crop&w=300&q=80" alt="Penguin">
+            </div>
+            <h3>GORDON</h3>
+            <p class="role-title">DIGITAL ARCHITECT</p>
+            <p class="role-desc">
+              Specializes in digital infrastructure and visual communication. He leads the development of the project website and media production, translating complex technical work into accessible visual narratives.
+            </p>
+          </div>
 
-                <!-- William -->
-                <div class="crew-card">
-                  <div class="id-badge">
-                    <img src="https://images.unsplash.com/photo-1598439210625-5067c578f3f6?auto=format&fit=crop&w=300&q=80" alt="Penguin">
-                  </div>
-                  <h3>WILLIAM</h3>
-                  <div class="bar-code"></div>
-                </div>
-              </div>
-        </section>
+          <!-- Bill -->
+          <div class="crew-card">
+            <div class="id-badge">
+              <img src="https://images.unsplash.com/photo-1598439210625-5067c578f3f6?auto=format&fit=crop&w=300&q=80" alt="Penguin">
+            </div>
+            <h3>BILL</h3>
+            <p class="role-title">AERODYNAMICS ENGINEER</p>
+            <p class="role-desc">
+              Lead Designer responsible for Computational Fluid Dynamics (CFD) analysis. He formulates the model geometry based on quantitative data to optimize thermal performance.
+            </p>
+          </div>
+
+          <!-- William -->
+          <div class="crew-card">
+            <div class="id-badge">
+              <img src="https://images.unsplash.com/photo-1598439210625-5067c578f3f6?auto=format&fit=crop&w=300&q=80" alt="Penguin">
+            </div>
+            <h3>WILLIAM</h3>
+            <p class="role-title">SYSTEMS ANALYST</p>
+            <p class="role-desc">
+              Collaborates on structural modeling and simulation data. He works to clarify product goals and verifies the integrity of the shield design through rigorous analysis.
+            </p>
+          </div>
+
+        </div>
+      </section>
+    </main>
 
     <footer><p>GUIN // ADAPTIVE AERODYNAMIC HEAT SHIELD</p></footer>
     <script type="module" src="/src/main.ts"></script>
