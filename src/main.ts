@@ -1,10 +1,12 @@
 import './style.css'
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'; // IMPORTED DRACO
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-// 1. TEXT DECRYPTION
+// ==========================================
+// 1. TEXT DECRYPTION EFFECT
+// ==========================================
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 const decryptText = (element: HTMLElement) => {
   let iteration = 0;
@@ -33,7 +35,9 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 document.querySelectorAll('.decrypt, .glitch-header').forEach(el => observer.observe(el));
 
+// ==========================================
 // 2. BACKGROUND PARTICLES
+// ==========================================
 const bgCanvas = document.getElementById('bg-canvas') as HTMLCanvasElement;
 if (bgCanvas) {
   const bgScene = new THREE.Scene();
@@ -80,7 +84,9 @@ if (bgCanvas) {
   });
 }
 
-// 3. PRODUCT VIEWER (FIXED)
+// ==========================================
+// 3. PRODUCT VIEWER (UPDATED FOR GLTF)
+// ==========================================
 const modelCanvas = document.getElementById('model-canvas') as HTMLCanvasElement;
 const container = document.getElementById('model-viewer-container');
 
@@ -101,15 +107,11 @@ if (modelCanvas && container) {
   dirLight.position.set(5, 5, 5);
   scene.add(dirLight);
 
-  // --- UPDATED CONTROLS ---
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.autoRotate = true;
-  controls.autoRotateSpeed = 2.0; // Slightly faster rotation looks cooler
-  
-  // FIX: Disable zoom so it doesn't hijack the page scroll
+  controls.autoRotateSpeed = 2.0;
   controls.enableZoom = false; 
-  // Allow panning if they want to move it around with right-click
   controls.enablePan = true; 
 
   const loader = new GLTFLoader();
@@ -119,20 +121,24 @@ if (modelCanvas && container) {
 
   const loadingText = document.querySelector('.loading-overlay');
   
-  const modelUrl = '/shield.glb';
+  // URL pointing to the .gltf file in the public folder
+  const modelUrl = '/shield.gltf'; 
 
   loader.load(modelUrl, (gltf) => {
     const model = gltf.scene;
     
-    // --- UPDATED SCALE (50% SMALLER) ---
-    // Previous was 1.8, now 0.9
-    model.scale.set(0.9, 0.9, 0.9); 
+    // Scale reduced to 50%
+    model.scale.set(14.0, 14.0, 14.0); 
     
-    model.position.y = 0; 
+    // Auto-Center logic (fixes offset models)
+    const box = new THREE.Box3().setFromObject(model);
+    const center = box.getCenter(new THREE.Vector3());
+    model.position.sub(center); 
+
     scene.add(model);
     if(loadingText) loadingText.textContent = "";
   }, undefined, (error) => {
-    console.error(error);
+    console.error("Error loading GLTF:", error);
     if(loadingText) loadingText.textContent = "MODEL LOAD FAILED";
   });
 
